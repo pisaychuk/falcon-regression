@@ -146,7 +146,7 @@ public class UpdateAtSpecificTimeTest extends BaseTestClass {
         OozieClientException, AuthenticationException {
 
         processBundle.setProcessValidity(TimeUtil.getTimeWrtSystemTime(0),
-                TimeUtil.getTimeWrtSystemTime(20));
+            TimeUtil.getTimeWrtSystemTime(20));
         processBundle.submitFeedsScheduleProcess(prism);
 
         //get old process details
@@ -360,7 +360,7 @@ public class UpdateAtSpecificTimeTest extends BaseTestClass {
     @Test(groups = {"MultiCluster", "0.3.1"}, timeOut = 1200000,
         enabled = true)
     public void inNextFewMinutesUpdate_RollForward_Feed()
-        throws JAXBException, IOException, URISyntaxException, JSchException, 
+        throws JAXBException, IOException, URISyntaxException, JSchException,
         OozieClientException, SAXException, AuthenticationException {
         try {
             String startTimeCluster_source = TimeUtil.getTimeWrtSystemTime(-18);
@@ -689,12 +689,12 @@ public class UpdateAtSpecificTimeTest extends BaseTestClass {
             XmlUtil.createRtention("days(1000000)", ActionType.DELETE), null,
             ClusterType.SOURCE, null);
         feed = InstanceUtil.setFeedCluster(feed, XmlUtil.createValidity
-                ("2012-10-01T12:10Z", "2099-10-01T12:10Z"),
+            ("2012-10-01T12:10Z", "2099-10-01T12:10Z"),
             XmlUtil.createRtention("days(1000000)", ActionType.DELETE),
             Util.readEntityName(b.getClusters().get(0)), ClusterType.SOURCE, "",
             "/someTestPath" + dateTemplate);
         ServiceResponse r = prism.getClusterHelper().submitEntity(Util.URLS
-                .SUBMIT_URL,
+            .SUBMIT_URL,
             b.getClusters().get(0));
         AssertUtil.assertSucceeded(r);
         r = prism.getFeedHelper().submitAndSchedule(Util.URLS
