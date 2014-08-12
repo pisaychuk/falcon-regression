@@ -90,7 +90,7 @@ public class InstancesResult extends APIResult {
         public String sourceCluster;
 
         @XmlElement
-        public Date startTime;
+        public String startTime;
 
         @XmlElement
         public Date endTime;
@@ -133,7 +133,7 @@ public class InstancesResult extends APIResult {
             return sourceCluster;
         }
 
-        public Date getStartTime() {
+        public String getStartTime() {
             return startTime;
         }
 
