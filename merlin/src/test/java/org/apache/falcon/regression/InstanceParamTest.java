@@ -50,6 +50,7 @@ import java.net.URISyntaxException;
 /**
  * tests for instance option params.
  */
+@Test(groups = "embedded")
 public class InstanceParamTest extends BaseTestClass {
 
     /**
@@ -57,13 +58,11 @@ public class InstanceParamTest extends BaseTestClass {
      */
 
     private String baseTestHDFSDir = baseHDFSDir + "/InstanceParamTest";
-    private String feedInputPath = baseTestHDFSDir
-            +
+    private String feedInputPath = baseTestHDFSDir +
         "/testInputData/${YEAR}/${MONTH}/${DAY}/${HOUR}/${MINUTE}";
     private String aggregateWorkflowDir = baseTestHDFSDir + "/aggregator";
     private String startTime;
     private String endTime;
-
     private ColoHelper cluster1 = servers.get(0);
     private OozieClient oC1 = serverOC.get(0);
     private Bundle processBundle;
@@ -92,6 +91,7 @@ public class InstanceParamTest extends BaseTestClass {
             bundles[i].setProcessWorkflow(aggregateWorkflowDir);
         }
     }
+
     @Test(timeOut = 1200000, enabled = false)
     public void getParamsValidRequestInstanceWaiting()
         throws URISyntaxException, JAXBException, AuthenticationException, IOException,
@@ -149,7 +149,6 @@ public class InstanceParamTest extends BaseTestClass {
             .getInstanceParams(Util.readEntityName(processBundle.getProcessData()),
                 "?start="+startTime);
         r.getMessage();
-
     }
 
     @AfterMethod(alwaysRun = true)
